@@ -35,7 +35,7 @@ m = rho_particula*V       #masa de la particula, grano de arena
 
 #Tiempo
 dt = 0.001*_s   #paso de tiempo
-tmax = 5. *_s   #tiempo maximo de simulacion
+tmax = 1 *_s   #tiempo maximo de simulacion
 ti = 0.*_s      #tiempo actual
 t = arange(0,tmax,dt)
 Nt = len(t)
@@ -43,13 +43,13 @@ Nt = len(t)
 #------------------
 
 #Generacion de particulas
-n = 5   #Numero de particulas
+n = 20   #Numero de particulas
 
 x01 = zeros((n,2))   #matriz posicion de las particulas
 v01 = zeros((n,2))   #matriz velocidad de las particulas
 for i in range(n):
-	x01[i][0:2] = array([random.random(),double((random.randint(0,n)+random.random()))])*d  #valores iniciales de la posicion
-	v01[i][0:2] = array([double(random.randint(0,n)+random.random()),double(random.randint(0,n)+random.random())])*_mm  # y la velocidad de la particula
+	x01[i][0:2] = array([random.random(),random.random()])*10*d*5  #valores iniciales de la posicion
+	v01[i][0:2] = array([random.random(),0.])/2  # y la velocidad de la particula
 
 print"Condiciones iniciales:"
 print "Posiociones ="
@@ -163,7 +163,7 @@ z = odeint(particula, z0, t)
 figure()
 ax=gca()
 for p in range(n):
-    x1 = z[:,p*4:2+p*4]
+    x1 = z[:,p*4:2+p*4]/d
     plot(x1[:,0],x1[:,1],label="p"+str(p+1))
    
 ax.axhline(d/2,color="k", linestyle="--")
