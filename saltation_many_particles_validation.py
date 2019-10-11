@@ -25,9 +25,15 @@ rho_agua = 1000.*_kg/(_m**3)
 Cd = 0.47   #Constante de drag
 Cl = 0.2    #Constante de lifting
 Cm = 0.5    #Constante de peso virtual
+Rp = 73.
+tau_star = 0.067
 R = (rho_particula/rho_agua) -1
 alpha = 1/(1+R+Cm)
 ustar = 0.18*_m/_s # sqrt(tauw/rho_agua)
+tau_cr = 0.22 *Rp**(-0.6) + 0.06*10**(-7*Rp**(-0.6))
+ustar = 0.18
+#ustar = sqrt(tau_star *g*Rp*d)
+#print tau_cr, ustar
 
 A = pi*(d/2)**2           #Area transversal de particula
 V = (4./3.)*pi*(d/2)**3   #Volumen de particula
@@ -44,12 +50,12 @@ Nt = len(t)
 #------------------
 
 #Generacion de particulas
-n = 4   #Numero de particulas
+n = 20   #Numero de particulas
 
 x01 = zeros((n,2))   #matriz posicion de las particulas
 v01 = zeros((n,2))   #matriz velocidad de las particulas
 for i in range(n):
-	x01[i][0:2] = array([random.random(),random.random()])*10*d*10  #valores iniciales de la posicion
+	x01[i][0:2] = array([random.random(),random.random()])*10*d*0.4*n  #valores iniciales de la posicion
 	v01[i][0:2] = array([random.random(),random.random()])/2  # y la velocidad de la particula
 
 print"Condiciones iniciales:"
@@ -76,6 +82,7 @@ def velocity_field(x):   #Perfil logaritmico
 	z=x[1]/d
 	if z>1./30.:
 		uf= ustar*log(30.*z)/0.41
+		uf = uf *(uf>0)
 	else:
 		uf=0
 
@@ -189,7 +196,7 @@ for p in range(n):
 m = (xmax3//d)*100
 x = linspace(0, xmax3,m)
 x_mod_d = (x % d) - d/2
-y = sqrt((d/2)**2 - x_mod_d**2)+d/2
+y = sqrt((d/2)**2 - x_mod_d**2)
 
 plot(x, y, label="Suelo")
 #axis("equal")
