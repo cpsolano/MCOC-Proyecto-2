@@ -1,6 +1,7 @@
 from matplotlib.pylab import *
 #from mpl_toolkits.mplot3d import Axes3D
 import random , math
+import time
 
 #unidades SI
 _m= 1.
@@ -16,7 +17,7 @@ vfy = 0.1 *_m/_s   #m/s
 
 #Parametros
 g = 9.81*_m/_s**2
-d = 15 * _mm
+d = 5. * _mm
 
 rho_particula = 2650.*_kg/(_m**3)
 rho_agua = 1000.*_kg/(_m**3)
@@ -35,7 +36,7 @@ m = rho_particula*V       #masa de la particula, grano de arena
 
 #Tiempo
 dt = 0.001*_s   #paso de tiempo
-tmax = 1 *_s   #tiempo maximo de simulacion
+tmax = 5 *_s   #tiempo maximo de simulacion
 ti = 0.*_s      #tiempo actual
 t = arange(0,tmax,dt)
 Nt = len(t)
@@ -48,8 +49,8 @@ n = 20   #Numero de particulas
 x01 = zeros((n,2))   #matriz posicion de las particulas
 v01 = zeros((n,2))   #matriz velocidad de las particulas
 for i in range(n):
-	x01[i][0:2] = array([random.random(),random.random()])*10*d*5  #valores iniciales de la posicion
-	v01[i][0:2] = array([random.random(),0.])/2  # y la velocidad de la particula
+	x01[i][0:2] = array([random.random(),random.random()])*10*d*10  #valores iniciales de la posicion
+	v01[i][0:2] = array([random.random(),random.random()])/2  # y la velocidad de la particula
 
 print"Condiciones iniciales:"
 print "Posiociones ="
@@ -117,8 +118,14 @@ def particula(z,t):
 		#fL = alpha*(3/4*CL*(norm(vf_top)**2 - norm(vf_bot)**2))
 		Fi = W + fD + fB + fL
 
-		if xi[1] < d/2.:   #Cuando centro de la particula se encuentra a una distancia de d/2 se produce el choque contra el piso
-			Fi[1] += -k_penal*(xi[1]-d/2)
+		x_mod_d = (xi[0] % d) - d/2
+		y = sqrt((d/2)**2 - x_mod_d**2)
+		if xi[1] < y:   #Cuando centro de la particula se encuentra a una distancia de d/2 se produce el choque contra el piso
+			xo = array([d/2+(xi[0]//d)*d,0])
+			dif = xi-xo
+			delta = d - norm(dif)
+			nio = dif/norm(dif)
+			Fi += k_penal*delta*nio
 
 		for j in range(n):   #Se revisa si hay colision con alguna de las otras particulas
 			if i > j:
@@ -141,6 +148,17 @@ def particula(z,t):
 					zp[2+j*4:4+j*4] -= Fc/m
 					#print "choque",t, p1, p2
 
+	#		if i > j:
+	#			xj = z[4*j:(4*j+2)]
+	#			rij = xj -xi
+	#			if norm(rij) < d:
+	#				delta = d - norm(rij)
+	#				nij = rij/norm(rij)
+	#				Fj = k_penal*delta*nij
+	#				Fi = -k_penal*delta*nij
+	#				zp[4*i+2:(4*i+4)] += Fi/m
+	#				zp[4*j+2:(4*j+4)] += Fj/m
+
 		zp[i*4:2+i*4] += vi      #Guardamos la derivada de la posicion con respecto al tiempo
 		zp[2+i*4:4+i*4] += Fi/m  #Guardamos la derivada de la velocidad con respecto al tiempo
 
@@ -155,24 +173,35 @@ for p in range(n):   # z0 = [x1,y1,vx1,vy1,x2,y2,vx2,vy2,x3,y3,vx3,vy3,....,xn,y
     z0[p*4:2+p*4] += x01[p]
     z0[2+p*4:4+p*4] += v01[p]
 
-
+start_time = time.time()
 z = odeint(particula, z0, t)
 #------------------
 
 #Graficos
 figure()
 ax=gca()
+xmax1 = 0
 for p in range(n):
-    x1 = z[:,p*4:2+p*4]/d
+    x1 = z[:,p*4:2+p*4]
     plot(x1[:,0],x1[:,1],label="p"+str(p+1))
-   
+    xmax2 = max(x1[:,0])
+    xmax3 = max([xmax1,xmax2])
+    xmax1 = xmax2
+
+m = (xmax3//d)*100
+x = linspace(0, xmax3,m)
+x_mod_d = (x % d) - d/2
+y = sqrt((d/2)**2 - x_mod_d**2)
+
+plot(x, y, label="Suelo")
+#axis("equal")
+
 ax.axhline(d/2,color="k", linestyle="--")
 #plot([0,t],[0,0],label="piso")
 #plot(x2[:,0],x2[:,1],label="x2")
-#ylim([0,50*_mm])
+#ylim([0,20])
 plt.title("Posicion particulas plano XY")
 plt.legend()
-
 
 #figure()
 #for p in range(n):
@@ -197,6 +226,7 @@ plt.legend()
 #	x1 = z[:,p*4:2+p*4]
 #	ax.plot(t, x1[:,0],x1[:,1]) 
 
+print "Tiempo de simulacion: {:.2f}s".format(time.time()-start_time)
 show()
 #------------------
 
