@@ -129,6 +129,7 @@ def particula(z,t):
 
 		for j in range(n):   #Se revisa si hay colision con alguna de las otras particulas
 			if i > j:
+				#Codigo nuestro
 				x2 = z[j*4:2+j*4]    #Posicion y velocidad de la 2da particula
 				xdif = norm(xi-x2)   #Distancia entre los centros de las particulas
 
@@ -147,8 +148,7 @@ def particula(z,t):
 					zp[2+i*4:4+i*4] += Fc/m
 					zp[2+j*4:4+j*4] -= Fc/m
 					#print "choque",t, p1, p2
-
-	#		if i > j:
+	#			Codigo del profe
 	#			xj = z[4*j:(4*j+2)]
 	#			rij = xj -xi
 	#			if norm(rij) < d:
