@@ -17,7 +17,7 @@ vfy = 0.1 *_m/_s   #m/s
 
 #Parametros
 g = 9.81*_m/_s**2
-d = 5. * _mm
+d = 15. * _mm
 
 rho_particula = 2650.*_kg/(_m**3)
 rho_agua = 1000.*_kg/(_m**3)
@@ -36,7 +36,7 @@ m = rho_particula*V       #masa de la particula, grano de arena
 
 #Tiempo
 dt = 0.001*_s   #paso de tiempo
-tmax = 5 *_s   #tiempo maximo de simulacion
+tmax = 1 *_s   #tiempo maximo de simulacion
 ti = 0.*_s      #tiempo actual
 t = arange(0,tmax,dt)
 Nt = len(t)
@@ -44,7 +44,7 @@ Nt = len(t)
 #------------------
 
 #Generacion de particulas
-n = 20   #Numero de particulas
+n = 4   #Numero de particulas
 
 x01 = zeros((n,2))   #matriz posicion de las particulas
 v01 = zeros((n,2))   #matriz velocidad de las particulas
@@ -111,18 +111,16 @@ def particula(z,t):
 		vf_top = norm(velocity_field(xi + (d/2)*jhat)) #falta
 		vf_bot = norm(velocity_field(xi - (d/2)*jhat)) #falta
 		vrel = vf - vi
-		vrel = vf-vi
 		fD = (0.5*Cd*alpha*rho_agua*norm(vrel)*A)*vrel  #formula wiki
 		#fD = alpha*(R*(d*g/(ustar**2))-(3./4.)*Cd*(vrel)*norm(vrel)) # formula PM
 		fL = (0.5*Cl*alpha*rho_agua*(vf_top**2 -vf_bot**2)*A)*jhat #formula wiki
 		#fL = alpha*(3/4*CL*(norm(vf_top)**2 - norm(vf_bot)**2))
 		Fi = W + fD + fB + fL
 
-		x_mod_d = (xi[0] % d) - d/2
-		y = sqrt((d/2)**2 - x_mod_d**2)
-		if xi[1] < y:   #Cuando centro de la particula se encuentra a una distancia de d/2 se produce el choque contra el piso
-			xo = array([d/2+(xi[0]//d)*d,0])
-			dif = xi-xo
+		x_mod_d = (xi[0] // d)*d + d/2  #Coordenada x del centro de la particula en el suelo
+		xo = array([x_mod_d,0])         #Centro de la particula del suelo
+		dif = xi - xo
+		if norm(dif) < d:   			#Cuando la distancia entre la particula y la particula del suelo es menor a d se produce el choque
 			delta = d - norm(dif)
 			nio = dif/norm(dif)
 			Fi += k_penal*delta*nio
@@ -130,34 +128,34 @@ def particula(z,t):
 		for j in range(n):   #Se revisa si hay colision con alguna de las otras particulas
 			if i > j:
 				#Codigo nuestro
-				x2 = z[j*4:2+j*4]    #Posicion y velocidad de la 2da particula
-				xdif = norm(xi-x2)   #Distancia entre los centros de las particulas
-
-				if xdif < d:         #Revisamos si hay choque revisando si la diferencia de posiciones es menor a 1 diametro
-					Fct = abs(-k_penal*(xdif-d))   #La misma idea de choque contra el suelo
-					theta = angulo(xi,x2)          #Angulo con que chocan las particulas
-					if xi[0] > x2[0]:              #Revisamos posicion de la particula con respecto a la que choco para ver si
-						Fcx = Fct*cos(theta)       # acelera o desacelera en el eje x e y
-					else:
-						Fcx = -Fct*cos(theta)
-					if xi[1] >= x2[1]:
-						Fcy = Fct*cos(theta)
-					else:
-						Fcy = -Fct*cos(theta)
-					Fc = array([Fcx, Fcy])
-					zp[2+i*4:4+i*4] += Fc/m
-					zp[2+j*4:4+j*4] -= Fc/m
+	#			x2 = z[j*4:2+j*4]    #Posicion y velocidad de la 2da particula
+	#			xdif = norm(xi-x2)   #Distancia entre los centros de las particulas
+	#			
+	#			if xdif < d:         #Revisamos si hay choque revisando si la diferencia de posiciones es menor a 1 diametro
+	#				Fct = abs(-k_penal*(xdif-d))   #La misma idea de choque contra el suelo
+	#				theta = angulo(xi,x2)          #Angulo con que chocan las particulas
+	#				if xi[0] > x2[0]:              #Revisamos posicion de la particula con respecto a la que choco para ver si
+	#					Fcx = Fct*cos(theta)       # acelera o desacelera en el eje x e y
+	#				else:
+	#					Fcx = -Fct*cos(theta)
+	#				if xi[1] >= x2[1]:
+	#					Fcy = Fct*cos(theta)
+	#				else:
+	#					Fcy = -Fct*cos(theta)
+	#				Fc = array([Fcx, Fcy])
+	#				zp[2+i*4:4+i*4] += Fc/m
+	#				zp[2+j*4:4+j*4] -= Fc/m
 					#print "choque",t, p1, p2
-	#			Codigo del profe
-	#			xj = z[4*j:(4*j+2)]
-	#			rij = xj -xi
-	#			if norm(rij) < d:
-	#				delta = d - norm(rij)
-	#				nij = rij/norm(rij)
-	#				Fj = k_penal*delta*nij
-	#				Fi = -k_penal*delta*nij
-	#				zp[4*i+2:(4*i+4)] += Fi/m
-	#				zp[4*j+2:(4*j+4)] += Fj/m
+				#Codigo del profe
+				xj = z[4*j:(4*j+2)]
+				rij = xj -xi
+				if norm(rij) < d:
+					delta = d - norm(rij)
+					nij = rij/norm(rij)
+					Fj = k_penal*delta*nij
+					Fi = -k_penal*delta*nij
+					zp[4*i+2:(4*i+4)] += Fi/m
+					zp[4*j+2:(4*j+4)] += Fj/m
 
 		zp[i*4:2+i*4] += vi      #Guardamos la derivada de la posicion con respecto al tiempo
 		zp[2+i*4:4+i*4] += Fi/m  #Guardamos la derivada de la velocidad con respecto al tiempo
@@ -191,7 +189,7 @@ for p in range(n):
 m = (xmax3//d)*100
 x = linspace(0, xmax3,m)
 x_mod_d = (x % d) - d/2
-y = sqrt((d/2)**2 - x_mod_d**2)
+y = sqrt((d/2)**2 - x_mod_d**2)+d/2
 
 plot(x, y, label="Suelo")
 #axis("equal")
