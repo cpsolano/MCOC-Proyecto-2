@@ -11,10 +11,6 @@ _mm = 1e-3*_m
 _gr = 1e-3*_kg
 #------------------
 
-vfx = 5.0*_m/_s    #m/s 
-vfy = 0.1 *_m/_s   #m/s
-
-
 #Parametros
 g = 9.81*_m/_s**2
 d = 15. * _mm
@@ -50,7 +46,7 @@ Nt = len(t)
 #------------------
 
 #Generacion de particulas
-n = 20   #Numero de particulas
+n = 2   #Numero de particulas
 
 x01 = zeros((n,2))   #matriz posicion de las particulas
 v01 = zeros((n,2))   #matriz velocidad de las particulas
@@ -178,6 +174,7 @@ for p in range(n):   # z0 = [x1,y1,vx1,vy1,x2,y2,vx2,vy2,x3,y3,vx3,vy3,....,xn,y
     z0[p*4:2+p*4] += x01[p]
     z0[2+p*4:4+p*4] += v01[p]
 
+print "Inicio simulacion"
 start_time = time.time()
 z = odeint(particula, z0, t)
 #------------------
@@ -186,22 +183,24 @@ z = odeint(particula, z0, t)
 figure()
 ax=gca()
 xmax1 = 0
+xmin1 = 0
 for p in range(n):
     x1 = z[:,p*4:2+p*4]
     plot(x1[:,0],x1[:,1],label="p"+str(p+1))
     xmax2 = max(x1[:,0])
-    xmax3 = max([xmax1,xmax2])
-    xmax1 = xmax2
+    xmax1 = max([xmax1,xmax2])
+    xmin2 = min(x1[:,0])
+    xmin1 = min([xmin1,xmin2])
 
-m = (xmax3//d)*100
-x = linspace(0, xmax3,m)
-x_mod_d = (x % d) - d/2
+m = (xmax1/d)*100
+x = linspace(xmin1, xmax1,m)
+x_mod_d =  (x % d) - d/2
 y = sqrt((d/2)**2 - x_mod_d**2)
 
 plot(x, y, label="Suelo")
 #axis("equal")
 
-ax.axhline(d/2,color="k", linestyle="--")
+ax.axhline(0,color="k", linestyle="--")
 #plot([0,t],[0,0],label="piso")
 #plot(x2[:,0],x2[:,1],label="x2")
 #ylim([0,20])
@@ -231,6 +230,7 @@ plt.legend()
 #	x1 = z[:,p*4:2+p*4]
 #	ax.plot(t, x1[:,0],x1[:,1]) 
 
+print "Fin simulacion"
 print "Tiempo de simulacion: {:.2f}s".format(time.time()-start_time)
 show()
 #------------------
