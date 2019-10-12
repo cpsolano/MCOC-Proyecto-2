@@ -3,9 +3,9 @@
 En este proyecto se busca poder simular el transporte de sedimento minero.
 
 ### Integrantes
- - Piedad Bull: https://github.com/piedadbull
- - Matias Echagüe: https://github.com/meechaguep
- - Pedro Naretto: https://github.com/PedroNaretto
+ - Piedad Bull: https://github.com/piedadbull/MCOC-Proyecto-2-
+ - Matias Echagüe: https://github.com/meechaguep/MCOC-Proyecto-2
+ - Pedro Naretto: https://github.com/PedroNaretto/MCOC-Proyecto-2
  - Catalina Solano: https://github.com/cpsolano
 
 ## Entrega 4
