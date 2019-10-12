@@ -14,7 +14,7 @@ En este proyecto se busca poder simular el transporte de sedimento minero de fon
 
 Se tomarán como supuestos las siguientes condiciones:
 
-- Diámetros de la partícula (d)= 15 mm
+- Diámetros de la partícula (d)= 0.15 mm
 - Densidad de la partícula (rho_particula) = 2650 kg/(m^3)
 - Densidad del agua (rho_agua) = 1000 kg/(m^3)
 - Constante de drag (Cd) = 0.47   
@@ -31,12 +31,20 @@ El intervalo de tiempo en los que grafica la posición de la partícula fue de (
 Al comparar los datos que se obtuvieron a partir del código con los del profesor, se puede ver una similitud para 2 particulas, con una diferencia de un decimal, lo cual se puede justificar por temas de unidades, pero se logra hacer una validación por los resultados obtenidos que se mueven en un rango parecido haciendo la excepción del decimal.
 
 ![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/2%20p.png)
+![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/particle_positions%202.png)
+
 
 Por otro lado, no se logra hacer una validación para una mayor cantidad de particular con respecto al movimiento que se espera entre ellas, pero se logran valores parecidos igual. El tener un movimiento distinto se puede deber a una modelación distinta del choque entre particulas.
 
 ![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/5%20p.png)
 
 ![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/10%20p.png)
+
+### Comparación para 20 particulas
+
+![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/20.1%20p.png)
+
+![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/particle_positions%201.png)
 
 ### Computador Catalina
 
@@ -57,4 +65,5 @@ A continuación se presentan los gráficos para 4,11 y 20 partículas.
 
 ### 20 partículas
 
+![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/20%20p.png)
 
