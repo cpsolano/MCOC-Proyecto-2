@@ -28,7 +28,15 @@ El intervalo de tiempo en los que grafica la posición de la partícula fue de (
 
 ### Validación
 
+Al comparar los datos que se obtuvieron a partir del código con los del profesor, se puede ver una similitud para 2 particulas, con una diferencia de un decimal, lo cual se puede justificar por temas de unidades, pero se logra hacer una validación por los resultados obtenidos que se mueven en un rango parecido haciendo la excepción del decimal.
 
+![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/2%20p.png)
+
+Por otro lado, no se logra hacer una validación para una mayor cantidad de particular con respecto al movimiento que se espera entre ellas, pero se logran valores parecidos igual. El tener un movimiento distinto se puede deber a una modelación distinta del choque entre particulas.
+
+![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/5%20p.png)
+
+![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/10%20p.png)
 
 ### Computador Catalina
 
@@ -37,16 +45,16 @@ El computador utilizado por mi parte es un HP de 15.6" Intel Core i5 8va generac
 ### Resultados
 
 El código se corrió con tres cantidades distintas de partículas.
-Primero se hizo la simulación con 4 partículas, con el cual se demoró 1.9 segundo en correr. Luego se volvió a realizar la simulación con 11 partículas, demorándose un tiempo de 20.1 segundos. Finalmente, el número de partículas fue 20, con el que demoró un tiempo mayor, el cual fue 121.77 segundos.
+Primero se hizo la simulación con 4 partículas, con el cual se demoró 14.33 segundo en correr. Luego se volvió a realizar la simulación con 11 partículas, demorándose un tiempo de 120.06 segundos. Finalmente, el número de partículas fue 20, con el que demoró un tiempo mayor, el cual fue 823.03 segundos.
 
 A continuación se presentan los gráficos para 4,11 y 20 partículas.
 
 ### 4 partículas
-![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/Gráfico%204%20p.png)
+![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/4%20p.png)
 
 ### 11 partículas
-![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/Gráfico%2011%20p.png)
+![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/11%20p.png)
 
 ### 20 partículas
-![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/Gráfico%2020%20p.png)
+
 
