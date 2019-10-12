@@ -13,7 +13,7 @@ _gr = 1e-3*_kg
 
 #Parametros
 g = 9.81*_m/_s**2
-d = 15. * _mm
+d = 0.15 * _mm
 
 rho_particula = 2650.*_kg/(_m**3)
 rho_agua = 1000.*_kg/(_m**3)
@@ -37,8 +37,8 @@ m = rho_particula*V       #masa de la particula, grano de arena
 #------------------
 
 #Tiempo
-dt = 0.001*_s   #paso de tiempo
-tmax = 1 *_s   #tiempo maximo de simulacion
+dt = 0.0001*_s   #paso de tiempo
+tmax = 2 *_s   #tiempo maximo de simulacion
 ti = 0.*_s      #tiempo actual
 t = arange(0,tmax,dt)
 Nt = len(t)
@@ -55,7 +55,7 @@ for i in range(n):
 	v01[i][0:2] = array([random.random(),random.random()])/2  # y la velocidad de la particula
 
 print"Condiciones iniciales:"
-print "Posiociones ="
+print "Posiciones ="
 print x01
 print "Velocidades ="
 print v01
@@ -116,7 +116,8 @@ def particula(z,t):
 		vrel = vf - vi
 		fD = (0.5*Cd*alpha*rho_agua*norm(vrel)*A)*vrel  #formula wiki
 		#fD = alpha*(R*(d*g/(ustar**2))-(3./4.)*Cd*(vrel)*norm(vrel)) # formula PM
-		fL = (0.5*Cl*alpha*rho_agua*(vf_top**2 -vf_bot**2)*A)*jhat #formula wiki
+		fL = (0.5*Cl*alpha*rho_agua*(vf_top -vf_bot)*A)* vrel[0] *jhat #formula wiki
+		#fL = (0.5 * CL * alpha * rho_agua * (vrelf_top - vrelf_bot) * area) * vrel[0] * jhat
 		#fL = alpha*(3/4*CL*(norm(vf_top)**2 - norm(vf_bot)**2))
 		Fi = W + fD + fB + fL
 
@@ -207,14 +208,18 @@ ax.axhline(0,color="k", linestyle="--")
 plt.title("Posicion particulas plano XY")
 plt.legend()
 
-#figure()
-#for p in range(n):
- #   subplot(2,n,p+1)
- #   x1 = z[:,p*4:2+p*4]
-  #  plot(t,x1[:,0],label="x"+str(p+1))
- #   plot(t,x1[:,1],label="y"+str(p+1))
- #   plt.title("Particula "+str(p+1)+'\nPosicion')
- #   plt.legend()
+figure()
+eje = ["x", "y"]
+for i in range(2):
+	for p in range(n):
+		subplot(2,1,i+1)
+		x1 = z[:,p*4:2+p*4]
+		plot(t,x1[:,i],label="Particula"+str(p+1))
+		#plot(t,x1[:,1],label="y"+str(p+1))
+		plt.title("Posicion particula en eje "+ eje[i])
+		ylabel(eje[i]+ "(t)")
+		xlabel("Tiempo")
+		plt.legend()
 
 #for p in range(n):
  #   subplot(2,n,p+n+1)
