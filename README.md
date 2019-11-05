@@ -83,7 +83,7 @@ El computador utilizado por mi parte es un HP de 15.6" Intel Core i5 8va generac
 
 
 ### Resultados Computador Pedro
-
+Se utilizo un computador Acer Aspire con Intel Core i5 de 2.3 GHz con 8 GB de memoria RAM, el cual se mantuvo enchufado.
 
 ### Resultados Computador Piedad
 
