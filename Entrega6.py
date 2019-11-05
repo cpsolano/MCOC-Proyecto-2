@@ -204,8 +204,6 @@ fout2 = h5py.File('resultados.hdf5', 'r')
 datos = array(fout2[u'z'])
 fout2.close()
 
-print datos
-
 for i in range(10):
     print datos[i]
     
