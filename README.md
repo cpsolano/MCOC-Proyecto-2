@@ -89,7 +89,7 @@ El computador utilizado por mi parte es un HP de 15.6" Intel Core i5 8va generac
 
 Mi computador es un MacBook Pro de 13-inch con un procesador 2 GHz Intel Core i5. Tiene 8 GB de memoria ram y un almacenamiento flash de 251 GB. Además, tiene una tarjeta gráfica Intel Iris Graphic 540 de 1536 MB. El computador se mantuvo desenchufado.
 
-![al text](https://github.com/piedadbull/MCOC-Proyecto-2-/blob/master/GráficoTiempovsNparticulas.png)
+![al text](https://github.com/piedadbull/MCOC-Proyecto-2-/blob/master/Entrega6/GráficoTiempovsNparticulas.png)
 
 
 
