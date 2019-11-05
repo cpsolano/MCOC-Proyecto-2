@@ -67,3 +67,26 @@ A continuación se presentan los gráficos para 4,11 y 20 partículas.
 
 ![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/20%20p.png)
 
+
+## Entrega 6
+
+En esta nueva entrega se solicitó optimizar el código de tal forma que al probar con distinta cantidad de partículas, se pudiera demostrar un comportamiento lineal entre el tiempo y la cantidad de partícula.
+
+### Gráficos de movimientos para distinta cantidad de particulas
+
+
+### Resultados Computador Catalina
+El computador utilizado por mi parte es un HP de 15.6" Intel Core i5 8va generación, 8 GB de Memoria RAM, se mantuvo enchufado.
+
+
+### Resultados Computador Matias
+
+
+### Resultados Computador Pedro
+
+
+### Resultados Computador Piedad
+
+
+
+
