@@ -214,8 +214,8 @@ for i in range(Nparticulas):
     plot(X,Y,label="P"+str(i+1))
 
 plt.title('Movimiento de particulas')
-plt.xlabel('Posición eje X')
-plt.ylabel('Posición eje Y')
+plt.xlabel('Posicion eje X')
+plt.ylabel('Posicion eje Y')
 plt.legend()
 
 show()
