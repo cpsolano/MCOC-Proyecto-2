@@ -182,9 +182,7 @@ if doit:
 					done[i] = 1
 
 		tf = time.time()
-
 		tiempo_bloque_2 += tf - ti
-
 		zk = zkm1
 		k += 1	 
 
@@ -199,3 +197,27 @@ print 'tiempo_bloque_2:', tiempo_bloque_2
 print 'Tiempo total', end - start
 
 #print 'Tiempo de escritura es {} % del tiempo total. '.formar(tiempo_bloque_1)
+
+#Graficos
+
+fout2 = h5py.File('resultados.hdf5', 'r')
+datos = array(fout2[u'z'])
+fout2.close()
+
+print datos
+
+for i in range(10):
+    print datos[i]
+    
+figure()
+for i in range(Nparticulas):
+    X = datos[:-1,1+4*i]/d
+    Y = datos[:-1,2+4*i]/d
+    plot(X,Y,label="P"+str(i+1))
+
+plt.title('Movimiento de particulas')
+plt.xlabel('Posición eje X')
+plt.ylabel('Posición eje Y')
+plt.legend()
+
+show()
