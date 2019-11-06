@@ -80,6 +80,10 @@ El computador utilizado por mi parte es un HP de 15.6" Intel Core i5 8va generac
 
 
 ### Resultados Computador Matias
+Se utilizo un computador Asus VivoBook Pro, con un procesador Intel(R)Core(TM)i7-7700HQ CPU @ 2.80GHz 2.81GHz, y una memoria RAM de 16 GB. El computador se encontraba enchufado mediante procesaba el código.
+
+![al text](https://github.com/meechaguep/MCOC-Proyecto-2/blob/master/Entrega%206/Particulas_vs_Tiempo.JPG)
+
 
 
 ### Resultados Computador Pedro
