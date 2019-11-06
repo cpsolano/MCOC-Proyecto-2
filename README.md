@@ -32,6 +32,8 @@ Al comparar los datos que se obtuvieron a partir del código con los del profeso
 
 ![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/Comparación%201.jpg)
 
+### 5 y 10 partículas
+
 Por otro lado, no se logra hacer una validación para una mayor cantidad de particular con respecto al movimiento que se espera entre ellas, pero se logran valores parecidos igual. El tener un movimiento distinto se puede deber a una modelación distinta del choque entre particulas.
 
 ![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/5%20y%2010.jpg)
@@ -81,9 +83,3 @@ Se utilizo un computador Acer Aspire con Intel Core i5 de 2.3 GHz con 8 GB de me
 El computador que se uso para esta entrega es un MacBook Pro de 13-inch con un procesador 2 GHz Intel Core i5. Tiene 8 GB de memoria ram y un almacenamiento flash de 251 GB. Además, tiene una tarjeta gráfica Intel Iris Graphic 540 de 1536 MB. El computador se mantuvo desenchufado.
 
 ![al text](https://github.com/piedadbull/MCOC-Proyecto-2-/blob/master/Entrega6/GraficoTiempovsNParticulas.png)
-
-
-
-
-
-
