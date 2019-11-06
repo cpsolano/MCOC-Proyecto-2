@@ -57,16 +57,7 @@ Primero se hizo la simulación con 4 partículas, con el cual se demoró 14.33 s
 
 A continuación se presentan los gráficos para 4,11 y 20 partículas.
 
-### 4 partículas
-![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/4%20p.png)
-
-### 11 partículas
-![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/11%20p.png)
-
-### 20 partículas
-
-![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/20%20p.png)
-
+![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/Grafico%204%2C11%2C20.jpg)
 
 ## Entrega 6
 
@@ -74,17 +65,17 @@ En esta nueva entrega se solicitó optimizar el código de tal forma que al prob
 
 ### Gráficos de movimientos para distinta cantidad de particulas
 
+![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/Slide1.JPG)
 
 ### Resultados Computador Catalina
 El computador utilizado por mi parte es un HP de 15.6" Intel Core i5 8va generación, 8 GB de Memoria RAM, se mantuvo enchufado.
 
+![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/Tiempo%20vs%20particulas.jpeg)
 
 ### Resultados Computador Matias
 Se utilizo un computador Asus VivoBook Pro, con un procesador Intel(R)Core(TM)i7-7700HQ CPU @ 2.80GHz 2.81GHz, y una memoria RAM de 16 GB. El computador se encontraba enchufado mediante procesaba el código.
 
 ![al text](https://github.com/meechaguep/MCOC-Proyecto-2/blob/master/Entrega%206/Particulas_vs_Tiempo.JPG)
-
-
 
 ### Resultados Computador Pedro
 Se utilizo un computador Acer Aspire con Intel Core i5 de 2.3 GHz con 8 GB de memoria RAM, el cual se mantuvo enchufado.
