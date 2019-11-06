@@ -67,3 +67,38 @@ A continuación se presentan los gráficos para 4,11 y 20 partículas.
 
 ![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/20%20p.png)
 
+
+## Entrega 6
+
+En esta nueva entrega se solicitó optimizar el código de tal forma que al probar con distinta cantidad de partículas, se pudiera demostrar un comportamiento lineal entre el tiempo y la cantidad de partícula.
+
+### Gráficos de movimientos para distinta cantidad de particulas
+
+
+### Resultados Computador Catalina
+El computador utilizado por mi parte es un HP de 15.6" Intel Core i5 8va generación, 8 GB de Memoria RAM, se mantuvo enchufado.
+
+
+### Resultados Computador Matias
+Se utilizo un computador Asus VivoBook Pro, con un procesador Intel(R)Core(TM)i7-7700HQ CPU @ 2.80GHz 2.81GHz, y una memoria RAM de 16 GB. El computador se encontraba enchufado mediante procesaba el código.
+
+![al text](https://github.com/meechaguep/MCOC-Proyecto-2/blob/master/Entrega%206/Particulas_vs_Tiempo.JPG)
+
+
+
+### Resultados Computador Pedro
+Se utilizo un computador Acer Aspire con Intel Core i5 de 2.3 GHz con 8 GB de memoria RAM, el cual se mantuvo enchufado.
+
+![al text](https://github.com/PedroNaretto/MCOC-Proyecto-2/blob/master/Captura.PNG)
+
+### Resultados Computador Piedad
+
+El computador que se uso para esta entrega es un MacBook Pro de 13-inch con un procesador 2 GHz Intel Core i5. Tiene 8 GB de memoria ram y un almacenamiento flash de 251 GB. Además, tiene una tarjeta gráfica Intel Iris Graphic 540 de 1536 MB. El computador se mantuvo desenchufado.
+
+![al text](https://github.com/piedadbull/MCOC-Proyecto-2-/blob/master/Entrega6/GraficoTiempovsNParticulas.png)
+
+
+
+
+
+

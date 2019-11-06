@@ -16,7 +16,7 @@ doit =True
 t = arange(0,tmax,dt)
 Nt = len(t)
 
-Nparticulas = 1
+Nparticulas = 5
 #tmax = 0.005
 
 if reuse_initial_condition:
@@ -203,9 +203,6 @@ print 'Tiempo total', end - start
 fout2 = h5py.File('resultados.hdf5', 'r')
 datos = array(fout2[u'z'])
 fout2.close()
-
-for i in range(10):
-    print datos[i]
     
 figure()
 for i in range(Nparticulas):
