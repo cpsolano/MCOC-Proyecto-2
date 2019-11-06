@@ -57,7 +57,7 @@ Primero se hizo la simulación con 4 partículas, con el cual se demoró 14.33 s
 
 A continuación se presentan los gráficos para 4,11 y 20 partículas.
 
-![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/Grafico%204%2C11%2C20.jpg)
+![al text](https://github.com/cpsolano/MCOC-Proyecto-2/blob/master/Gráficos/4%2C%2011%2C%2020%20particulas.jpeg)
 
 ## Entrega 6
 
